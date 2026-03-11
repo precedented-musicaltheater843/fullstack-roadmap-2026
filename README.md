@@ -1,2 +1,13 @@
-# fullstack-roadmap-2026
-2026 için yapılandırılmış, öncelikli olarak arka uç odaklı tam yığın web geliştirici yol haritası. JavaScript, TypeScript, NestJS, PostgreSQL, Docker, React, Next.js, test, güvenlik, sistem tasarımı ve dağıtım konularını kapsar; her modül için hedefler, alıştırmalar, mini projeler ve çıkış kriterleri içerir.
+## Katkıda Bulunma
+
+Bu roadmap toplulukla birlikte büyümeyi hedefliyor.
+
+Eksik bir konu, hatalı bir sıralama veya eklenebilecek bir kaynak görürsen:
+
+1. Repo'yu fork'la
+2. Yeni bir branch aç (`git checkout -b feat/yeni-konu`)
+3. Değişikliğini yap ve commit et
+4. Pull Request aç — ne eklediğini ve neden gerekli olduğunu kısaca açıkla
+
+Her katkı değerlidir. Büyük ekleme zorunlu değil;  
+küçük bir kaynak, daha net bir açıklama veya eksik bir checkbox bile fark yaratır.
