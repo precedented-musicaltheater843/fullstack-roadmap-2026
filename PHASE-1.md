@@ -256,6 +256,19 @@ Tekrar eden işleri kontrollü şekilde yazmak ve iterasyon mantığını kurmak
 - [ ] Hangi yöntem ne zaman? — okunabilirlik vs performans dengesi
 - [ ] Zincirleme (chaining) ne zaman iyi, ne zaman kaçınılmalı
 
+**Iterables, Iterators ve Generators**
+- [ ] Iterable nedir? — `for...of` ile gezilebilen her şey (`Symbol.iterator` uygular)
+- [ ] Iterator protocol — `next()` metodu, `{ value, done }` döndürür
+- [ ] Hangi şeyler iterable? — Array, String, Map, Set, arguments, NodeList
+- [ ] Custom iterator yazma — `Symbol.iterator` ile kendi nesne için `for...of` desteği
+- [ ] Generator function — `function*` syntax
+- [ ] `yield` — generator'dan değer üret, beklet
+- [ ] Generator ile lazy (tembel) veri üretimi — sonsuz dizi örneği
+- [ ] `return` ile generator bitirme
+- [ ] Generator'ı manuel çalıştırma — `.next()` ile adım adım
+- [ ] Async generator farkındalığı — `async function*` ile async iterable
+- [ ] Ne zaman generator kullanılır? — büyük veri akışı, sayfalama, sonsuz sıra
+
 ### Ödevler
 
 - [ ] Aynı işi for, for...of ve map ile yaz
@@ -298,6 +311,20 @@ Fonksiyonları tekrar eden kodu azaltan, anlam taşıyan yapı taşları olarak 
 - [ ] Pure function nedir? (aynı input → aynı output, yan etki yok)
 - [ ] Side effect nedir ve ne zaman kaçınılır?
 - [ ] Fonksiyon isimlendirme (fiil ile başlama: `getUser`, `isValid`, `calculateTotal`)
+
+**`this` Bağlamı**
+- [ ] `this` nedir? — çağrılma biçimine göre değişen dinamik bağlam
+- [ ] Global context'te `this` (strict mode ile farkı)
+- [ ] Object method'unda `this` — nesneye bağlı
+- [ ] Implicit binding — nokta notasyonuyla çağrı (`obj.method()`)
+- [ ] Explicit binding — `call`, `apply`, `bind`
+  - [ ] `call(thisArg, arg1, arg2)` — hemen çağır, argümanları tek tek ver
+  - [ ] `apply(thisArg, [args])` — hemen çağır, argümanları dizi olarak ver
+  - [ ] `bind(thisArg)` — yeni fonksiyon döndürür, sonra çağrılır
+- [ ] Arrow function'da `this` — lexical `this`, kendi `this`'i yok
+- [ ] Arrow function ne zaman kullanılmaz? — object method, prototype method
+- [ ] `this` kaybetme (callback içinde) ve nasıl korunur
+- [ ] `new` ile çağrıldığında `this` — yeni nesneye bağlanır
 - [ ] Tek sorumluluk prensibi — fonksiyon bir iş yapar
 - [ ] Parametreyi object olarak almak (named parameters)
 
@@ -352,7 +379,26 @@ Pratikte en sık kullanılan built-in method'ları gerçekten kullanabilir hale 
 - [ ] String.raw farkındalığı
 - [ ] at(-1) ile sondan erişim
 
-**Array**
+**RegExp — Düzenli İfadeler**
+- [ ] RegExp nedir? — metin içinde desen arama ve eşleştirme
+- [ ] Literal syntax — `/desen/flags`
+- [ ] `new RegExp()` ile dinamik desen oluşturma
+- [ ] Flags — `g` (global), `i` (case-insensitive), `m` (multiline), `s` (dotAll)
+- [ ] Karakter sınıfları — `\d`, `\w`, `\s`, `\D`, `\W`, `\S`
+- [ ] Niceleyiciler — `*`, `+`, `?`, `{n}`, `{n,m}`
+- [ ] Anchors — `^` (başlangıç), `$` (bitiş)
+- [ ] Gruplar — `(abc)` capturing group, `(?:abc)` non-capturing
+- [ ] Named group — `(?<isim>desen)` ile isimli grup
+- [ ] Alternation — `a|b`
+- [ ] Lookahead / lookbehind farkındalığı — `(?=...)`, `(?!...)`
+- [ ] String metodlarıyla kullanım — `test`, `match`, `matchAll`, `replace`, `replaceAll`, `split`, `search`
+- [ ] `exec` ile tekrarlı arama
+- [ ] Yaygın pratik desenler:
+  - [ ] Email doğrulama (temel)
+  - [ ] URL doğrulama (temel)
+  - [ ] Türkçe karakter dahil harf kontrolü
+  - [ ] Whitespace temizleme
+  - [ ] Slug üretimi (özel karakter kaldırma)
 - [ ] push / pop / shift / unshift
 - [ ] includes / indexOf / lastIndexOf
 - [ ] slice (kopyalar) vs splice (mutate eder — fark kritik)
@@ -392,6 +438,21 @@ Pratikte en sık kullanılan built-in method'ları gerçekten kullanabilir hale 
 - [ ] JSON.stringify ile pretty print
 - [ ] Math.floor / ceil / round / abs / min / max / random / pow / sqrt
 - [ ] Number.isFinite / Number.isInteger / Number.toFixed
+
+**Intl — Uluslararasılaştırma ve Yerelleştirme**
+- [ ] `Intl` nedir? — tarayıcı/Node built-in, locale'e duyarlı biçimleme
+- [ ] `Intl.DateTimeFormat` — tarihi locale'e göre formatla
+  - [ ] `new Intl.DateTimeFormat('tr-TR', { dateStyle: 'long' }).format(date)`
+  - [ ] Saat dilimi seçimi (`timeZone` option)
+  - [ ] Kısa / uzun / sayısal format seçenekleri
+- [ ] `Intl.NumberFormat` — sayıyı locale'e göre formatla
+  - [ ] Para birimi — `style: 'currency'`, `currency: 'TRY'`
+  - [ ] Yüzde — `style: 'percent'`
+  - [ ] Binlik ayracı ve ondalık farkı (TR vs EN)
+- [ ] `Intl.RelativeTimeFormat` — "3 gün önce", "2 saat sonra" gibi göreli zaman
+- [ ] `Intl.Collator` — locale'e duyarlı dizi sıralama (Türkçe karakterler dahil)
+- [ ] `Intl.Segmenter` farkındalığı — kelime/cümle bazlı bölme
+- [ ] Ne zaman `Intl` şarttır? — çok dilli ürün, para gösterimi, tarih biçimleme
 
 ### Ödevler
 
@@ -606,6 +667,22 @@ JavaScript'in prototip tabanlı doğasını ve class syntax'ının neyi sardığ
 - [ ] super ile üst sınıfa erişim
 - [ ] Private fields (`#` prefix)
 - [ ] Encapsulation farkındalığı
+
+**Getter, Setter ve Property Descriptor**
+- [ ] Getter — `get propName()` ile hesaplanan property
+- [ ] Setter — `set propName(val)` ile kontrollü atama
+- [ ] Object literal içinde getter/setter
+- [ ] Class içinde getter/setter
+- [ ] Ne zaman kullanılır? — türetilmiş değer, doğrulama ile atama, lazy hesaplama
+- [ ] Property descriptor — her property'nin metadata'sı
+  - [ ] `value` — değer
+  - [ ] `writable` — değiştirilebilir mi?
+  - [ ] `enumerable` — `for...in` ve `Object.keys`'de görünür mü?
+  - [ ] `configurable` — silinebilir / yeniden tanımlanabilir mi?
+- [ ] `Object.defineProperty` — descriptor ile property tanımlama
+- [ ] `Object.getOwnPropertyDescriptor` — property'nin descriptor'ını oku
+- [ ] `Object.defineProperties` — birden fazla property aynı anda
+- [ ] `Object.freeze` ve `Object.seal` — descriptor açısından ne yapar?
 - [ ] Composition vs inheritance trade-off
 - [ ] OOP her yerde şart mı? — fonksiyonel yaklaşımla karşılaştırma
 
