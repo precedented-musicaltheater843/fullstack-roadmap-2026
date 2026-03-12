@@ -241,3 +241,24 @@
 - [ ] Test katmanlarını kurabiliyorsun
 - [ ] Hata ve performans takibi için araç ekleyebiliyorsun
 - [ ] Bir sistemi tasarlarken "ne nerede durur?" diye sormaya başlıyorsun
+
+---
+
+## Faz 4 Köprüsü
+
+### Bu fazda ne öğrendin?
+Auth'un gerçek dünya parçaları, güvenlik, test stratejisi, cache stratejileri, rate limiting, observability, legacy/refactoring ve system design temeli. Backend'i "çalışıyor" seviyesinden "üretime yakın" seviyeye taşıdın.
+
+### Bu faz senden sonra ne açtı?
+Frontend'e artık güçlü bir backend tarafıyla geçiyorsun. React'ta state yönetimini, form validasyonunu, loading/error state'lerini yazarken arka planda ne döndüğünü biliyorsun. Faz 6'daki full-stack entegrasyon bu temeller üzerine oturuyor.
+
+### Geliştiricilerin %80'inin yaptığı hata
+- Auth'u "login endpoint'i yaptım tamam" deyip refresh token, email verify, şifre sıfırlama yazmamak
+- Güvenliği "sonra eklerim" demek — production'da eklenmiyor
+- Test yazmayı sadece Faz 4'e bırakmak — aslında her fazda yazılmalıydı
+- Sentry'yi kurup hiç bakmamak
+- Cache ekleyip invalidation stratejisi düşünmemek — stale veri döner, fark edilmez
+- System design sorularını "senior olunca öğrenirim" diye ertelemek
+
+### Açık kaynak okuma görevi
+`lucia-auth` veya `better-auth` gibi bir auth kütüphanesinin GitHub reposuna git. Session ve token yönetimini nasıl implement etmişler? Kendi yazdığın refresh token akışıyla karşılaştır. Neler farklı, neden farklı?

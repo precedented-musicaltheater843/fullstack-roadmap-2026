@@ -340,3 +340,24 @@ Modern Next.js ile üretime daha yakın arayüzler ve kapsamlı test akışı ku
 - [ ] MSW ile API bağımlılığı olmadan component test yazabiliyorsun
 - [ ] Playwright ile kritik akışları test edebiliyorsun
 - [ ] Modern Next.js yapısını korkmadan kurabiliyorsun
+
+---
+
+## Faz 5 Köprüsü
+
+### Bu fazda ne öğrendin?
+React temelleri, hooks, Tailwind, form yönetimi, state mimarisi, accessibility, Next.js App Router, MSW, RTL ve Playwright. Artık ön ve arka yüzü birlikte yazabiliyorsun.
+
+### Bu faz senden sonra ne açtı?
+Faz 6'da bu frontend ve backend'i gerçek bir ürün olarak birleştireceksin. WebSocket, monorepo, tip güvenli API katmanı ve AI entegrasyonu — hepsini çalışan bir sistemde göreceksin.
+
+### Geliştiricilerin %80'inin yaptığı hata
+- Her state'i global'e taşımak — "Zustand'a koyayım sorun çözülsün"
+- `useEffect` bağımlılık dizisini boş bırakmak, uyarıları görmezden gelmek
+- Server component ile client component sınırını anlamamak — her yere `"use client"` eklemek
+- Test yazmayı "proje bitince" bırakmak
+- Tailwind yerine inline style yazmak — tutarsız tasarım
+- Error Boundary koymamak — bir component hatası tüm sayfayı çökertir
+
+### Açık kaynak okuma görevi
+`shadcn/ui` GitHub reposuna git. Herhangi bir component seç (örn. `Dialog`, `Combobox`). Kaynak kodunu aç: accessibility nasıl sağlanmış, keyboard navigation nasıl yapılmış, state nasıl yönetilmiş? Kendi yazdığın component'lerle karşılaştır.

@@ -173,3 +173,35 @@ Kendi projelerini deploy ederken izleyeceğin adım adım rehber. Her adım, kom
 - [ ] Server tarafı sana tamamen kara kutu gelmiyor
 - [ ] Production için optimize edilmiş Docker image oluşturabiliyorsun
 - [ ] Nginx ile reverse proxy kurabiliyorsun
+
+---
+
+## Faz 7 Köprüsü — Roadmap Sonu
+
+### Bu fazda ne öğrendin?
+Deploy, Linux, PM2, Docker production, CI/CD, database migration stratejisi ve observability. Projen artık internette, izleniyor ve bakımı yapılıyor.
+
+### Bu faz senden sonra ne açtı?
+Roadmap bitti — ama öğrenme bitmedi. Şu anda elimde olan şey gerçek projelerde kullanılabilir, savunulabilir, üretime yakın bir full-stack geliştirici profiline karşılık geliyor.
+
+Bundan sonra ilerleyeceğin yerler:
+- Gerçek bir projede çalışmak — ekip, code review, PR süreci
+- Open source katkısı — küçük bir bug fix bile çok şey öğretir
+- Sistem tasarımı daha derin — NeetCode, ByteByteGo, gerçek vaka çalışmaları
+- İş mülakatları — DSA + system design + take-home project
+- Seçmeli derinleşme — Kubernetes, GraphQL, event sourcing, platform engineering
+
+### Geliştiricilerin %80'inin yaptığı hata
+- Projeyi "çalışıyor" deyip hiç izlememek — Sentry'ye bakmamak, log okumamak
+- CI/CD kurup test koşmayı atlamak — pipeline hızlansa da güven sağlamıyor
+- Production'da `.env` dosyasını direkt sunucuya kopyalamak
+- Database migration'ı test etmeden production'a uygulamak
+- Deploy playbook yazmamak — "ben biliyorum zaten" demek, 6 ay sonra unutuluyor
+- Graceful shutdown yazmamak — deploy sırasında açık istekler kesilir
+
+### Açık kaynak okuma görevi
+Kendi deploy ettiğin bir servisin GitHub Actions workflow dosyasına bak. Gerçek bir açık kaynak projenin (örn. `vercel/next.js`, `nestjs/nest`, `prisma/prisma`) `.github/workflows/` klasörünü incele. CI pipeline'ları nasıl kurulmuş? Test, lint, build hangi sırayla? Release nasıl yönetiliyor?
+
+---
+
+*Bu roadmap'i tamamladıysan: tebrikler. Ünvan değil, gerçek yetkinlik kazandın.*

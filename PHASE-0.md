@@ -166,3 +166,21 @@ Responsive, semantic ve erişilebilir profil sayfası.
 - [ ] Basit responsive layout kurabiliyorsun
 - [ ] Erişilebilirliğin sadece ekran okuyucu değil, ürün kalitesi konusu olduğunu biliyorsun
 - [ ] CSS Flexbox ile temel layout sorunlarını çözebiliyorsun
+
+---
+
+## Faz 0 Köprüsü
+
+### Bu fazda ne öğrendin?
+Terminal, Git, temel web yapısı ve çalışma disiplini. Bunlar araçlar — asıl iş henüz başlamadı.
+
+### Bu faz senden sonra ne açtı?
+Git olmadan hiçbir proje yönetilemez. Terminal olmadan hiçbir araç çalıştırılamaz. Semantic HTML olmadan erişilebilir frontend yazılamaz. Sonraki her fazın temeli burada atıldı.
+
+### Geliştiricilerin %80'inin yaptığı hata
+- `.gitignore` olmadan `node_modules`'ü commit etmek
+- Commit mesajlarını "fix", "update", "asdf" gibi anlamsız yazmak
+- `div` soup — her şeyi `<div>` ile yazmak, semantic eleman kullanmamak
+
+### Açık kaynak okuma görevi
+VS Code'un GitHub reposuna git (`microsoft/vscode`). Herhangi bir `.md` dosyasını aç ve nasıl yazıldığına bak. Katkıda bulunma rehberini oku. Bir issue'ya göz at. Kod okumak zorunda değilsin — proje kültürünü hisset.

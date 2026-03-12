@@ -25,6 +25,19 @@
 - [ ] Ödeme simülasyonu — Stripe farkındalığı
 - [ ] Cron / schedule vs queue farkı
 
+**Event-Driven Mimari Farkındalığı**
+> Bu başlıklar farkındalık seviyesinde — derinlemesine implement etmen şart değil, ne olduğunu ve ne zaman ihtiyaç duyulduğunu bil.
+- [ ] Event-driven architecture nedir? — bileşenler doğrudan değil, event üzerinden haberleşir
+- [ ] Domain event nedir? — "UserRegistered", "OrderPlaced", "PaymentFailed" gibi iş olayları
+- [ ] Event sourcing farkındalığı — state'i saklamak yerine olayları sakla, state'i olaylardan hesapla
+- [ ] CQRS farkındalığı — Command (yazma) ve Query (okuma) taraflarını ayır; farklı model, farklı optimizasyon
+- [ ] Outbox pattern — en kritik pratik kalıp
+  - [ ] Problem: "DB'ye yaz VE event gönder" — ikisi atomik değil, biri başarısız olabilir
+  - [ ] Çözüm: önce outbox tablosuna yaz (DB transaction içinde), ayrı worker event'i gönderir
+  - [ ] Neden önemli? — ödeme kaydedildi ama email gitmediyse ciddi sorun
+- [ ] Saga pattern farkındalığı — dağıtık işlemlerde tutarlılık
+- [ ] Ne zaman event-driven? — servisler arası bağımlılığı azaltmak, audit trail, async koordinasyon
+
 ---
 
 ### Aşama 2 — WebSocket ve Gerçek Zamanlı İletişim
@@ -105,6 +118,14 @@
 - [ ] Monorepo'da versioning farkındalığı
 - [ ] Internal package import — `@myapp/types`
 
+**Monorepo Gerçek Dünya Sorunları**
+- [ ] Phantom dependency — bir paket `node_modules`'de var ama `package.json`'da yok; başka makinede çalışmaz
+- [ ] Workspace hoisting — pnpm/npm hangi paketi nereye kurar? Hoist neden sorun yaratabilir?
+- [ ] Circular dependency — `packages/ui` → `packages/types` → `packages/ui` döngüsü
+- [ ] Monorepo ne zaman yük haline gelir? — 2 kişilik ekipte Nx overkill olabilir
+- [ ] Changesets ile versiyon yönetimi farkındalığı — internal package'lar nasıl versiyonlanır?
+- [ ] Monorepo'da test stratejisi — sadece değişen package'ı test et (Turborepo cache ile)
+
 ---
 
 ### Aşama 5 — AI / LLM Entegrasyonu
@@ -124,6 +145,24 @@
 - [ ] Prompt injection riski — kullanıcı girdisini güvenli ilet
 - [ ] AI özelliği için maliyet yönetimi — token sayımı, rate limit
 - [ ] Anthropic Claude, Google Gemini API alternatifleri
+
+**Tool Calling / Function Calling**
+- [ ] Tool calling nedir? — modele fonksiyon tanımları ver, model hangisini çağıracağına karar verir
+- [ ] Kullanım senaryoları: veritabanı sorgulama, hava durumu alma, takvim oluşturma
+- [ ] Vercel AI SDK ile `tools` parametresi
+- [ ] `tool` tanımı — name, description, parameters (Zod şeması)
+- [ ] Model araç çağırdığında ne olur? — `tool_call` sonucu uygulamaya döner, uygulama çalıştırır, sonucu modele iletir
+- [ ] Multi-step tool calling farkındalığı — model birden fazla araç çağırabilir
+- [ ] Güvenlik: kullanıcı input'una dayalı araç çağrısı tehlikeleri
+
+**RAG (Retrieval-Augmented Generation) Farkındalığı**
+- [ ] RAG nedir? — modelin bilmediği bilgiyi dışarıdan getirip context'e ekle
+- [ ] Ne zaman RAG? — kendi dokümanların, ürün kataloğun, destek bilgin hakkında soru yanıtlama
+- [ ] Temel akış: kullanıcı sorusu → embedding → vektör DB'den benzer belge getir → modele context olarak ver
+- [ ] Embedding nedir? — metni sayısal vektöre dönüştür, anlamsal benzerlik karşılaştır
+- [ ] Vektör veritabanı farkındalığı — pgvector (PostgreSQL extension), Pinecone, Qdrant
+- [ ] pgvector — PostgreSQL içinde vektör araması; ayrı servis kurmadan başlamak için iyi
+- [ ] Chunk stratejisi — uzun belgeyi parçalara böl, her parçayı ayrı embed et
 
 **Prompt Güvenliği (Derinleştirilmiş)**
 - [ ] Prompt injection nedir? — kullanıcı girdisi sistem prompt'unu manipüle ediyor
@@ -184,3 +223,24 @@
 - [ ] Orval ile OpenAPI'den tip güvenli client üretebiliyorsun
 - [ ] Monorepo kurabiliyorsun
 - [ ] Basit bir AI özelliği entegre edebiliyorsun
+
+---
+
+## Faz 6 Köprüsü
+
+### Bu fazda ne öğrendin?
+Tüm parçaları birleştirdin: WebSocket, monorepo, tip güvenli API katmanı, event-driven farkındalığı ve AI entegrasyonu. İlk kez "tek başıma tam ürün yapabilirim" hissini yaşadın.
+
+### Bu faz senden sonra ne açtı?
+Artık çalışan bir ürün var. Faz 7'de bunu internete çıkarıyorsun, güvenli tutuyor ve izliyorsun. Roadmap'in son fazı.
+
+### Geliştiricilerin %80'inin yaptığı hata
+- Frontend'de izin kontrolü yapıp backend'de yapmamak
+- Webhook'u doğrulamadan işlemek — herkes istek gönderebilir
+- Monorepo kurup shared type'ları her şeye bağlamak — coupling patlar
+- AI özelliği ekleyip prompt injection'ı düşünmemek
+- Tool calling'de kullanıcı girdisini doğrulamamak
+- Outbox pattern olmadan "DB'ye yaz VE event gönder" demek — üçte biri kaybolur
+
+### Açık kaynak okuma görevi
+`cal.com` GitHub reposuna git — gerçek bir SaaS monorepo. `apps/` ve `packages/` klasörlerine bak. Nasıl organize etmişler? Hangi shared package'lar var? Turborepo config'i nasıl kurulmuş? Kodun kendisini anlamak zorunda değilsin — mimariyi hisset.

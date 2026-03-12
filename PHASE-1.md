@@ -473,6 +473,15 @@ Kodun sadece mutlu senaryoda değil, kötü senaryoda da güvenli davranmasını
 - [ ] Error propagation — hatayı yukarı taşımak ne zaman doğru?
 - [ ] Try-catch abartmama — her yere koymak anti-pattern
 
+**Hata Yönetimi Zihinsel Modeli**
+- [ ] Her isteğin dört aşaması vardır: **Girdi → Doğrulama → İş Mantığı → Sonuç/Hata**
+  - Girdi: dış dünyadan gelen ham veri (kullanıcı, API, DB)
+  - Doğrulama: tip, format, zorunluluk, sınır kontrolü — hata varsa erken dön
+  - İş mantığı: asıl işlem — hata varsa anlamlı custom error fırlat
+  - Sonuç/Hata: başarı değeri veya yakalanmış hata — kullanıcıya uygun mesaj ver
+- [ ] Bu modeli Bölüm 11'den itibaren her fonksiyon ve route için uygula
+- [ ] İleride NestJS exception filter, API status code'ları hep bu modelin uzantısıdır
+
 ### Ödevler
 
 - [ ] Hatalı input için güvenli yardımcı fonksiyonlar yaz
@@ -732,3 +741,24 @@ Stack, Queue, LinkedList, binary search, recursion örneklerini barındıran —
 - [ ] Recursive fonksiyon yazıp hata ayıklayabiliyorsun
 - [ ] Binary search'ü ezberden değil mantıktan yazabiliyorsun
 - [ ] Easy Leetcode sorularına yaklaşmak seni felç etmiyor
+
+---
+
+## Faz 1 Köprüsü
+
+### Bu fazda ne öğrendin?
+JavaScript'in tüm çekirdeği: değişkenler, tipler, fonksiyonlar, async, OOP, modüller, hata yönetimi, debugging ve temel DSA. Bu faz en uzun fazdır — ve olması gerekiyor.
+
+### Bu faz senden sonra ne açtı?
+TypeScript JS üzerine oturur — tip sistemi olmadan anlaşılmaz. NestJS class, decorator ve async bilgisi ister. React closure ve immutability bilgisi ister. DSA mülakatlarda karşına çıkar. Hepsinin temeli burada.
+
+### Geliştiricilerin %80'inin yaptığı hata
+- `var` kullanmaya devam etmek
+- `async/await` yazıp `try/catch` unutmak
+- Her şeyi tek fonksiyona doldurmak, parçalamamak
+- Mutation bug'larını anlayamamak ("neden bu obje burada değişti?")
+- Test yazmayı "sonraya" bırakmak — sonra hiç gelmiyor
+- Leetcode'a bakıp "ben bunu öğrenemem" deyip DSA'yı tamamen atlamak
+
+### Açık kaynak okuma görevi
+`lodash` kütüphanesine git (`lodash/lodash`). `chunk`, `groupBy`, `debounce` fonksiyonlarının kaynak kodunu oku. Kendi yazdığın benzer fonksiyonlarla karşılaştır. Profesyoneller edge case'leri nasıl ele alıyor, gör.
