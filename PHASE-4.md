@@ -123,6 +123,43 @@
 - [ ] CPU-bound işlerin ayrı ele alınması — worker thread farkındalığı
 - [ ] Database connection pool boyutu
 
+**Cache Stratejileri (Derinleştirilmiş)**
+- [ ] TTL (Time-To-Live) — süre dolunca otomatik geçersiz kıl; basit ama stale veri riski var
+- [ ] LRU (Least Recently Used) — en az kullanılan düşür; bellek sınırı olan cache için ideal
+- [ ] Write-through — yazma hem DB'ye hem cache'e gider; tutarlı ama yazma yavaşlar
+- [ ] Write-behind (write-back) — önce cache'e yaz, asenkron DB'ye yaz; hızlı ama veri kayıp riski
+- [ ] Cache-aside (lazy loading) — uygulama önce cache'e bakar, yoksa DB'den alır, cache'e yazar; en yaygın
+- [ ] Ne zaman hangi strateji? — okuma ağırlıklı vs yazma ağırlıklı workload
+- [ ] Cache stampede (thundering herd) — aynı anda çok istek cache miss yaparsa ne olur?
+- [ ] TTL'e jitter (rastgele sapma) ekleyerek stampede önleme
+
+**Rate Limiting Implementation Patterns**
+- [ ] Fixed window — sabit zaman diliminde N istek; pencere kenarında burst riski
+- [ ] Sliding window log — her isteği timestamp ile sakla; doğru ama bellek yoğun
+- [ ] Sliding window counter — sabit window + önceki window ağırlığı; denge noktası
+- [ ] Token bucket — sürekli dolan kova; burst'e izin verir, API gateway'lerde yaygın
+- [ ] Leaky bucket — sabit çıkış hızı; burst'ü düzleştirir
+- [ ] Redis ile dağıtık rate limit — tüm instance'lar için ortak sayaç
+- [ ] Rate limit response: `429 Too Many Requests` + `Retry-After` header
+
+**Observability Araçları (Genişletilmiş)**
+- [ ] Datadog farkındalığı — APM, log yönetimi, metrik, distributed tracing hepsi bir arada
+- [ ] New Relic farkındalığı — Datadog alternatifi; benzer özellikler
+- [ ] Grafana + Prometheus farkındalığı — açık kaynak, self-hosted; metrik toplama + görselleştirme
+- [ ] OpenTelemetry farkındalığı — vendor-bağımsız observability standardı; bir kez entegre et, istediğin yere gönder
+- [ ] Distributed tracing — çok katmanlı sistemde tek isteğin tüm yolculuğunu takip et
+- [ ] Log aggregation farkındalığı — Loki (Grafana ekosistemi), ELK stack (Elasticsearch + Logstash + Kibana)
+
+**Legacy Kod ve Refactoring**
+- [ ] Legacy kod nedir? — test edilmemiş, belgelenmemiş, eski teknoloji
+- [ ] Korkmadan legacy kod okumak — önce anla, sonra değiştir
+- [ ] Refactoring nedir? Davranış değiştirmeden kodu iyileştirme
+- [ ] "Test harness" kurmak — önce test yaz, sonra refactor et (güvenlik ağı)
+- [ ] Strangler fig pattern — eski sistemi yavaş yavaş yeni sistemle değiştirme
+- [ ] Big bang rewrite neden riskli?
+- [ ] Küçük adımlarla iyileştirme — her PR tek bir sorumluluk
+- [ ] Teknik borç nedir, nasıl yönetilir, nasıl önceliklendirilir?
+
 ---
 
 ### Aşama 7 — System Design Farkındalığı
@@ -150,6 +187,35 @@
 - [ ] NeetCode — System Design bölümüne göz at
 - [ ] ByteByteGo YouTube kanalından 5 video izle
 - [ ] "System Design Interview" kitabı 3. bölüme kadar oku
+
+---
+
+### Aşama 8 — Performans Kontrol Listesi
+
+> Tüm faz boyunca öğrenilen performans konularını tek yerde topla. Her proje deploy'dan önce bu listeyi geç.
+
+**Veritabanı**
+- [ ] N+1 sorgu yok — ORM query'lerini logla ve kontrol et
+- [ ] Sık sorgulanan sütunlarda index var
+- [ ] Sadece gerekli sütunlar çekiliyor — `SELECT *` yok
+- [ ] Pagination uygulandı — sınırsız liste döndürülmüyor
+- [ ] EXPLAIN ANALYZE ile yavaş sorgular tespit edildi
+
+**API**
+- [ ] Response payload minimize edildi
+- [ ] Rate limiting uygulandı
+- [ ] Cache eklendi (uygunsa)
+- [ ] Gereksiz veritabanı çağrısı yok
+
+**Bellek ve CPU**
+- [ ] Event listener cleanup var (memory leak yok)
+- [ ] CPU-bound işler ana thread'de değil
+- [ ] Gereksiz nesne oluşturma minimumda
+
+**Cache**
+- [ ] TTL makul — çok kısa (anlamsız) veya çok uzun (stale) değil
+- [ ] Cache invalidation stratejisi var
+- [ ] Cache miss senaryosu test edildi
 
 ---
 

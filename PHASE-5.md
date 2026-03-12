@@ -26,6 +26,24 @@ Sadece çalışan arayüz değil; sürdürülebilir, test edilebilir ve erişile
 - [ ] Lifting state up
 - [ ] Composition — component içine component
 
+**Error Boundaries**
+- [ ] Error Boundary nedir? — render sırasında oluşan JS hatalarını yakalar
+- [ ] Class component ile Error Boundary yazma (hook alternatifi yok, class zorunlu)
+- [ ] `react-error-boundary` paketi — `ErrorBoundary` component, `useErrorBoundary` hook
+- [ ] `fallback` prop — hata olunca gösterilecek UI
+- [ ] `onError` callback — Sentry gibi servislere hata gönderme
+- [ ] `resetKeys` ile otomatik recovery
+- [ ] Ne zaman Error Boundary kullanılır? — sayfa çökmesini lokalize et
+- [ ] async hataları Error Boundary yakalamaz — onlar try/catch ile
+
+**Build Tooling**
+- [ ] Vite nedir? — ESM tabanlı, hızlı dev server, Rollup ile production build
+- [ ] Webpack nedir? — eski standart, hâlâ yaygın, config-heavy
+- [ ] Vite vs Webpack farkı — HMR hızı, config karmaşıklığı, ekosistem
+- [ ] Neden 2026'da genellikle Vite? — Next.js zaten Webpack/Turbopack kullanır; CRA yerine Vite + React tercih edilir
+- [ ] Turbopack farkındalığı — Next.js'in yeni build tool'u (Rust tabanlı)
+- [ ] `vite.config.ts` temel ayarlar — alias, proxy, env
+
 ---
 
 ### Aşama 2 — Hooks ve Veri Akışı
@@ -139,6 +157,18 @@ Sadece çalışan arayüz değil; sürdürülebilir, test edilebilir ve erişile
   - [ ] Optimistic update
   - [ ] Infinite query farkındalığı (infinite scroll)
   - [ ] QueryClient ile global hata handling
+
+**State Yönetimi Karar Ağacı**
+- [ ] "Bu state nerede yaşamalı?" sorusunu her state için sor
+- [ ] Local state (useState) → sadece bu component kullanıyor
+- [ ] Lifted state (parent'ta useState) → birkaç kardeş component kullanıyor
+- [ ] Context → uygulama geneli, sık değişmiyor (tema, kullanıcı bilgisi)
+- [ ] Zustand → uygulama geneli, sık değişiyor, context re-render sorunu var
+- [ ] TanStack Query → sunucudan gelen, cache'lenebilen veri
+- [ ] Redux Toolkit farkındalığı — büyük ekip, karmaşık state, güçlü DevTools gerekiyorsa
+- [ ] Ne zaman Redux yerine Zustand? — küçük-orta proje, daha az boilerplate
+- [ ] "Her şeyi global state'e koyma" anti-pattern — local state önce dene
+- [ ] Server state vs client state — TanStack Query + Zustand kombinasyonu neden işe yarar
 
 ---
 
@@ -255,6 +285,20 @@ Modern Next.js ile üretime daha yakın arayüzler ve kapsamlı test akışı ku
 - [ ] Protected route testi — yetkisiz erişim kontrolü
 - [ ] Flaky test nedenleri ve nasıl önlenir
 - [ ] Playwright trace viewer
+
+**React Testing Patterns**
+- [ ] Arrange → Act → Assert yapısı
+- [ ] `getByRole` neden diğer query'lerden önce tercih edilir? (a11y ile örtüşme)
+- [ ] "Test ID" ne zaman son çare? — `data-testid` sadece başka yol yoksa
+- [ ] Loading state testi — `findBy*` ile async bekleme
+- [ ] Error state testi — MSW ile 500 dön, UI kontrol et
+- [ ] Empty state testi — boş liste durumunda ne gösteriliyor?
+- [ ] Form testi — doldur, submit et, success/error mesajı kontrol et
+- [ ] Optimistic update testi — mutation öncesi UI değişti mi?
+- [ ] `screen.debug()` ile test içinde DOM'u görme
+- [ ] Test coverage rakamına takılma — %80 coverage anlamsız test olabilir
+- [ ] Ne test edilmeli? — kullanıcının gördüğü ve yaptığı şeyler
+- [ ] Ne test edilmemeli? — implementation details (state değerleri, private fonksiyon)
 
 ---
 

@@ -120,6 +120,20 @@ Projeyi sadece kendi bilgisayarında değil, internette güvenli ve düzenli ça
 - [ ] Başarısız deploy — ne olur, nasıl rollback yapılır?
 - [ ] Deployment strategy farkındalığı — blue/green, rolling, canary
 
+**Veritabanı Migration Stratejisi CI/CD'de**
+- [ ] Migration ne zaman çalışmalı? — deploy öncesi mi, sonrası mı?
+- [ ] Deploy öncesi migration riski — yeni migration eski kod ile uyumsuz olabilir
+- [ ] Deploy sonrası migration — eski kod yeni şemayı bilmiyor; kısa süre tutarsızlık
+- [ ] Expand/contract pattern — en güvenli yöntem
+  - [ ] Expand: yeni sütun ekle (eski kod çalışmaya devam eder)
+  - [ ] Deploy: yeni kodu deploy et (her iki sütunu da kullanır)
+  - [ ] Contract: eski sütunu kaldır (artık kullanılmıyor)
+- [ ] Zero-downtime migration için backward-compatible değişiklikler yap
+- [ ] `NOT NULL` sütun eklemenin tehlikesi — önce nullable, sonra doldur, sonra NOT NULL
+- [ ] Migration rollback — down migration'ı da yaz, test et
+- [ ] Production'da migration çalıştırmadan önce staging'de test et
+- [ ] Büyük tabloda migration — LOCK tehlikesi, `pg_repack` farkındalığı
+
 ---
 
 ### Aşama 6 — Gözlem ve Bakım

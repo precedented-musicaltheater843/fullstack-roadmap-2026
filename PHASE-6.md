@@ -45,6 +45,15 @@
 - [ ] Room / channel mantığı — sadece ilgili kullanıcıya mesaj
 - [ ] Redis Pub/Sub ile yatay ölçekleme farkındalığı
 
+**Socket.io vs Native WebSocket Karar Noktaları**
+- [ ] Native WebSocket — tarayıcı built-in, hafif, düşük overhead
+- [ ] Socket.io overhead — ekstra protokol katmanı, ~30KB client bundle
+- [ ] Socket.io avantajları: otomatik reconnect, room/namespace, HTTP fallback (polling), event tabanlı API
+- [ ] Socket.io dezavantajları: ekstra bağımlılık, native WebSocket'ten yavaş, Socket.io server zorunlu
+- [ ] Ne zaman native WebSocket? — basit, performans kritik, tek yönlü veri akışı
+- [ ] Ne zaman Socket.io? — room yönetimi, reconnect önemli, hızlı geliştirme öncelikli
+- [ ] Socket.io v4 — HTTP long-polling fallback ne zaman devreye girer?
+
 ---
 
 ### Aşama 3 — Tip Güvenli API Katmanı
@@ -116,7 +125,29 @@
 - [ ] AI özelliği için maliyet yönetimi — token sayımı, rate limit
 - [ ] Anthropic Claude, Google Gemini API alternatifleri
 
-**Pratik Entegrasyon**
+**Prompt Güvenliği (Derinleştirilmiş)**
+- [ ] Prompt injection nedir? — kullanıcı girdisi sistem prompt'unu manipüle ediyor
+- [ ] Doğrudan prompt injection — kullanıcı "ignore previous instructions" gibi şeyler yazar
+- [ ] Dolaylı prompt injection — LLM'in okuduğu bir belge içine zararlı talimat gizlendi
+- [ ] Savunma: kullanıcı girdisini sistem prompt'a doğrudan enjekte etme
+- [ ] Savunma: input validation — beklenen format dışındaki uzun/şüpheli girdileri reddet
+- [ ] Savunma: output validation — LLM çıktısını da doğrula (hassas bilgi sızdı mı?)
+- [ ] Savunma: least privilege — LLM'e gereksiz tool/yetki verme
+- [ ] OWASP LLM Top 10 farkındalığı
+
+**Token Maliyet Yönetimi**
+- [ ] Token nedir? — yaklaşık 4 karakter = 1 token
+- [ ] Input token vs output token fiyatlandırması (output genellikle daha pahalı)
+- [ ] Maliyet hesaplama — `tiktoken` veya model provider'ın tokenizer aracı
+- [ ] Sistem prompt maliyet etkisi — her istekte tekrar gönderilir
+- [ ] `max_tokens` sınırı koymak — sınırsız output maliyeti patlatır
+- [ ] Caching — aynı sistem prompt için prompt caching desteği (Anthropic, OpenAI)
+- [ ] Rate limiting AI endpoint'ini — kullanıcı başına günlük limit
+- [ ] Streaming ile maliyet kontrolü — kullanıcı iptal ederse token israfı
+
+---
+
+### Kapanış Projeleri
 - [ ] Next.js + Vercel AI SDK ile basit chat arayüzü kur
 - [ ] NestJS backend ile OpenAI API çağrısını proxy et (key güvenliği)
 - [ ] Streaming response'u frontend'de göster
